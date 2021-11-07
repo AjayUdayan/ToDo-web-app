@@ -26,7 +26,6 @@ const Dashboard = () => {
                     <Route exact path="/completed" component={Completed} />
                     <Route exact path="/pending" component={Pending} />
                 </Switch>
-
             </div>
 
         </Fragment>
