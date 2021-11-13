@@ -1,5 +1,8 @@
 import { combineReducers } from "redux";
+import { TaskReducer } from './task'
 
-export default combineReducers({
-
+const mainReducer = combineReducers({
+    TaskReducer: TaskReducer
 })
+
+export default mainReducer

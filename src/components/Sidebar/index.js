@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import { Chip, Drawer } from '@mui/material'
 import { Link } from 'react-router-dom'
 import CompletedTaskIcon from '@mui/icons-material/TaskAlt';
@@ -11,10 +9,12 @@ import AllTaskIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import { makeStyles } from '@mui/styles';
 
+
 const useStylesBase = makeStyles({
     wrapper: {
         maxWidth: '300px', height: '98vh',
         backgroundColor: '#3764d1',
+        paddingTop:'2rem !important',
         // position:'fixed !important',
         // borderLeft:0,
         // bottom:0

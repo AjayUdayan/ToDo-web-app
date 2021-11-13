@@ -8,28 +8,48 @@ import { Checkbox } from '@mui/material';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import { UPDATE_TASK, DELETE_TASK } from '../../redux/actions/task';
+import { connect } from 'react-redux';
 
-function TaskRow() {
+
+function TaskRow(props) {
+    const { task } = props
+    const { UPDATE_TASK,DELETE_TASK } = props
+
+    const handleComplete = () => {
+        UPDATE_TASK(task?._id, { completed: !task?.completed })
+    }
+    const handleDelete = () => {
+        alert('hi')
+        DELETE_TASK(task?._id)
+    }
+
     return (
         <ListItem
-            secondaryAction={
-                <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon fontSize='small' style={{ marginRight: '50%' }} />
-                    <ModeEditIcon fontSize='small' style={{paddingRight:'3rem'}}/>
-                </IconButton>
-            }
-            style={{boxShadow:"1px 2px 4px -1px rgb(0 0 0 / 20%)",borderRadius:'8px',marginTop:'8px'}}
+            style={{ boxShadow: "1px 2px 4px -1px rgb(0 0 0 / 20%)", borderRadius: '8px', marginTop: '8px', marginLeft: '15px' }}
         >
             <ListItemIcon>
-                <Checkbox icon={<CircleOutlinedIcon />}
+                <Checkbox onChange={handleComplete} defaultChecked={task?.completed} icon={<CircleOutlinedIcon />}
                     checkedIcon={<CheckCircleOutlineOutlinedIcon />} />
             </ListItemIcon>
             <ListItemText
-                primary="Single-line item"
+                primary={task?.description}
             />
+            <div>
+                <IconButton >
+                    <DeleteIcon onClick={handleDelete} fontSize='small' />
+                </IconButton>
+                <IconButton >
+                    <ModeEditIcon fontSize='small' />
+                </IconButton>
+            </div>
         </ListItem>
 
     )
 }
 
-export default TaskRow
+const mapDispatchToProps = (state) => {
+    return { allTask: state?.TaskReducer?.allTask };
+}
+
+export default connect(mapDispatchToProps, { UPDATE_TASK, DELETE_TASK })(TaskRow)

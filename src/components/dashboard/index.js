@@ -5,6 +5,8 @@ import Completed from '../../pages/completed';
 import Pending from '../../pages/pending';
 import Sidebar from '../Sidebar';
 import { makeStyles } from '@mui/styles';
+import Header from '../../components/header'
+import NewTask from '../newTask';
 
 const useStylesBase = makeStyles({
     wrapper: {
@@ -18,7 +20,7 @@ const Dashboard = () => {
 
     return (
         <Fragment >
-            {/* <Header /> */}
+            <Header />
             <div className={classes.wrapper}>
                 <Sidebar />
                 <Switch>
@@ -27,7 +29,7 @@ const Dashboard = () => {
                     <Route exact path="/pending" component={Pending} />
                 </Switch>
             </div>
-
+            <NewTask/>
         </Fragment>
     );
 };

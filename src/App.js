@@ -11,7 +11,7 @@ import store from "./redux/store"
 import Page404Error from './pages/Page404Error';
 import './index.css'
 
-var authenticated = true; // false
+var authenticated = false;
 if (localStorage.getItem("token")) {
     authenticated = true
 }
